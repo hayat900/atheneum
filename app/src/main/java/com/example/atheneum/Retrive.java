@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -51,5 +55,37 @@ public class Retrive extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+        switch(id)
+        {
+            case R.id.Logout:
+                Toast.makeText(this, "LOgout SElected", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(Retrive.this,MainActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.Total:
+                Toast.makeText(this, "Total Due SElected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Due:
+                Toast.makeText(this, "Due Today SElected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Users:
+                Toast.makeText(this, "Users SElected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Retrive.this,MainActivity2.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 }
