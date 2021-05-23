@@ -19,6 +19,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.Date;
+
 public class MainActivity3 extends AppCompatActivity {
     RecyclerView review;
     FirebaseFirestore db;
@@ -33,7 +35,12 @@ public class MainActivity3 extends AppCompatActivity {
         review = findViewById(R.id.review);
 
         db = FirebaseFirestore.getInstance();
-        query = db.collection("users");
+        Date date=new Date();
+        int year=date.getYear();
+        int month=date.getMonth();
+        int day=date.getDay();
+        String result=day+"-"+month+"-"+year;
+        query = db.collection("users").whereEqualTo("due",result);
         review.setLayoutManager(new LinearLayoutManager(this));
         FirestoreRecyclerOptions<model3> options = new FirestoreRecyclerOptions.Builder<model3>()
                 .setQuery(query, model3.class)
