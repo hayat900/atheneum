@@ -1,7 +1,7 @@
 package com.example.atheneum;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
+
+
 import android.content.DialogInterface;
 import android.os.Build;
 import android.util.Log;
@@ -15,9 +15,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.firestore.ChangeEventListener;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,33 +34,30 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-
-
 public class myadapter2 extends FirestoreRecyclerAdapter<model2,myadapter2.myviewholder> {
     public myadapter2(@NonNull FirestoreRecyclerOptions<model2> options) {
         super(options);
     }
 
-
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull model2 model) {
 
-        holder.name.setText("Name: "+model.getName());
-        holder.sem.setText("Sem: "+model.getSem());
-        holder.issue.setText("Usn: "+model.getUsn());
-        holder.book.setText("Book: "+model.getBook());
-        holder.due.setText("Author: "+model.getAuthor());
-        holder.fine.setText("Fine: "+model.getFine());
-        holder.usn.setText("Issue: "+model.getIssue());
-        holder.author.setText("Due: "+model.getDue());
-        holder.email.setText("Email: "+model.getEmail());
 
 
 
+        holder.name.setText("Name: " + model.getName());
+        holder.sem.setText("Sem: " + model.getSem());
+        holder.issue.setText("Usn: " + model.getUsn());
+        holder.book.setText("Book: " + model.getBook());
+        holder.due.setText("Author: " + model.getAuthor());
+        holder.fine.setText("Fine: " + model.getFine());
+        holder.usn.setText("Issue: " + model.getIssue());
+        holder.author.setText("Due: " + model.getDue());
+        holder.email.setText("Email: " + model.getEmail());
 
 
         Glide.with(holder.img.getContext()).load(model.getImage()).into(holder.img);
+
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +96,7 @@ public class myadapter2 extends FirestoreRecyclerAdapter<model2,myadapter2.myvie
                         .setContentHolder(new ViewHolder(R.layout.dialogcontent2)).setExpanded(true,1100
                         ).create();
                 //dialogPlus.show();
+
                 View myview=dialogPlus.getHolderView();
                 EditText url=myview.findViewById(R.id.uimgurl);
                 EditText name=myview.findViewById(R.id.uname);
