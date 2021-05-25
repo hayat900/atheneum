@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -27,26 +26,86 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myviewholder> {
-    public myadapter3(@NonNull FirestoreRecyclerOptions<model3> options) {
+public class myadapter4 extends FirestoreRecyclerAdapter<model4, myadapter4.myviewholder> {
+    public myadapter4(@NonNull FirestoreRecyclerOptions<model4> options) {
         super(options);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
-    protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull model3 model) {
-        LocalDate myObj = LocalDate.now();
-        String date=model.getDue();
+    protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull model4 model) {
+        Date date_curr=new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
+        String result=dateFormat.format(date_curr);
+
+        String date=model.getDue();
+        long fine = 0;
+
+        try {
+            Date date2 = dateFormat.parse(result);
+            Date date1 = dateFormat.parse(date);
+            long diff = date2.getTime() - date1.getTime();
+            long days=TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+            fine=days*5;
+            Log.d("days",String.valueOf(days));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+//        String[] arrSplit = result.split("-");
+//        String[] arrSplit2 = date.split("-");
+//        int curr_month=Integer.parseInt(arrSplit[1]);
+//        int curr_date=Integer.parseInt(arrSplit[0]);
+//        int curr_year=Integer.parseInt(arrSplit[2]);
+//        int due_month=Integer.parseInt(arrSplit2[1]);
+//        int due_date=Integer.parseInt(arrSplit2[0]);
+//        int due_year=Integer.parseInt(arrSplit2[2]);
+
+//        if(due_year==curr_year)
+//        {
+//            if(curr_month==due_month)
+//            {
+//                if(curr_date>due_date)
+//                {
+//                    fine=(curr_date-due_date)*5;
+//                }
+//            }
+//            if(curr_month>due_month)
+//            {
+//                int diff_month=curr_month-due_month;
+//                int total_days=30*diff_month;
+//
+//            }
+//        }
+        FirebaseFirestore dbroot;
+        dbroot=FirebaseFirestore.getInstance();
+
+        dbroot.collection("users").document(model.getEmail()).update("fine",String.valueOf(fine)).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("msg","congrats");
+                //dialogPlus.dismiss();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("msg","sorry");
+               // dialogPlus.dismiss();
+            }
+        });
 
 
             holder.name.setText("Name: " + model.getName());
@@ -56,7 +115,7 @@ public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myvi
             holder.due.setText("Author: " + model.getAuthor());
             holder.fine.setText("Fine: " + model.getFine());
             holder.usn.setText("Issue: " + model.getIssue());
-            holder.author.setText("Due: " + date);
+            holder.author.setText("Due: " + model.getDue());
             holder.email.setText("Email: " + model.getEmail());
 
 
@@ -97,7 +156,7 @@ public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myvi
             @Override
             public void onClick(View v) {
                 final DialogPlus dialogPlus=DialogPlus.newDialog(holder.img.getContext())
-                        .setContentHolder(new ViewHolder(R.layout.dialogcontent2)).setExpanded(true,1100
+                        .setContentHolder(new ViewHolder(R.layout.dialogcontent2)).setExpanded(true,1400
                         ).create();
                 //dialogPlus.show();
 

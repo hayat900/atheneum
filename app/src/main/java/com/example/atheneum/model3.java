@@ -7,12 +7,13 @@ import java.util.Date;
 
 public class model3 {
     String name,sem,usn,book,author,image,fine,email;
-    Date issue,due;
+    String issue;
+    String due;
     model3(){
 
     }
 
-    public model3(String name, String sem, String usn, String book, String author, String image, String fine, Date issue, Date due, String email) {
+    public model3(String name, String sem, String usn, String book, String author, String image, String fine, String issue, String due, String email) {
         this.name = name;
         this.sem = sem;
         this.usn = usn;
@@ -82,19 +83,19 @@ public class model3 {
         this.fine = fine;
     }
 
-    public Date getIssue() {
+    public String getIssue() {
         return issue;
     }
 
-    public void setIssue(Date issue) {
+    public void setIssue(String issue) {
         this.issue = issue;
     }
 
-    public Date getDue() {
+    public String getDue() {
         return due;
     }
 
-    public void setDue(Date due) {
+    public void setDue(String due) {
         this.due = due;
     }
     public String getEmail() {

@@ -22,7 +22,7 @@ import com.google.firebase.firestore.Query;
 public class MainActivity2 extends AppCompatActivity {
     RecyclerView review;
     FirebaseFirestore db;
-    myadapter2 adapter;
+    useradapter adapter;
     Query query;
     FloatingActionButton add;
 
@@ -38,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
         FirestoreRecyclerOptions<model2> options = new FirestoreRecyclerOptions.Builder<model2>()
                 .setQuery(query, model2.class)
                 .build();
-        adapter = new myadapter2(options);
+        adapter = new useradapter(options);
         review.setAdapter(adapter);
         review.setHasFixedSize(true);
         add = (FloatingActionButton) findViewById(R.id.add);
@@ -72,15 +72,25 @@ public class MainActivity2 extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.Logout:
-                Toast.makeText(this, "LOgout SElected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Logout Selected", Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent(MainActivity2.this, MainActivity.class);
                 startActivity(intent2);
                 return true;
             case R.id.Total:
-                Toast.makeText(this, "Total Due SElected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Total Due Selected", Toast.LENGTH_SHORT).show();
+                Intent intent4 = new Intent(MainActivity2.this,MainActivity4.class);
+                startActivity(intent4);
                 return true;
+
             case R.id.Due:
-                Toast.makeText(this, "Due Today SElected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Due Today Selected", Toast.LENGTH_SHORT).show();
+                Intent intent3 = new Intent(MainActivity2.this,MainActivity3.class);
+                startActivity(intent3);
+
+                return true;
+            case R.id.Users:
+                Toast.makeText(this, "Already in users", Toast.LENGTH_SHORT).show();
+
                 return true;
 
             default:

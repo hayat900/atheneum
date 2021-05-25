@@ -1,18 +1,15 @@
 package com.example.atheneum;
 
 
-
-import java.util.Date;
-
-public class model2 {
+public class model4 {
     String name,sem,usn,book,author,image,fine,email;
     String issue;
     String due;
-    model2(){
+    model4(){
 
     }
 
-    public model2(String name, String sem, String usn, String book, String author, String image, String fine, String issue, String due,String email) {
+    public model4(String name, String sem, String usn, String book, String author, String image, String fine, String issue, String due, String email) {
         this.name = name;
         this.sem = sem;
         this.usn = usn;

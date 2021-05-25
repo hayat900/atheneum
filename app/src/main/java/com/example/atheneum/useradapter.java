@@ -2,6 +2,8 @@ package com.example.atheneum;
 
 
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.util.Log;
@@ -12,14 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.firebase.ui.firestore.ChangeEventListener;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,20 +29,25 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-
-public class myadapter2 extends FirestoreRecyclerAdapter<model2,myadapter2.myviewholder> {
-    public myadapter2(@NonNull FirestoreRecyclerOptions<model2> options) {
+public class useradapter extends FirestoreRecyclerAdapter<model2, useradapter.myviewholder> {
+    public useradapter(@NonNull FirestoreRecyclerOptions<model2> options) {
         super(options);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull model2 model) {
-
+        LocalDate myObj = LocalDate.now();
+        String date=model.getDue();
 
 
 
@@ -52,7 +58,7 @@ public class myadapter2 extends FirestoreRecyclerAdapter<model2,myadapter2.myvie
         holder.due.setText("Author: " + model.getAuthor());
         holder.fine.setText("Fine: " + model.getFine());
         holder.usn.setText("Issue: " + model.getIssue());
-        holder.author.setText("Due: " + model.getDue());
+        holder.author.setText("Due: " + date);
         holder.email.setText("Email: " + model.getEmail());
 
 
@@ -179,3 +185,4 @@ public class myadapter2 extends FirestoreRecyclerAdapter<model2,myadapter2.myvie
         }
     }
 }
+

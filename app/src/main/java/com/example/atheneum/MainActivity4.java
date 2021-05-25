@@ -25,17 +25,17 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity3 extends AppCompatActivity {
+public class MainActivity4 extends AppCompatActivity {
     RecyclerView review;
     FirebaseFirestore db;
-    myadapter3 adapter;
+    myadapter4 adapter;
     Query query;
     FloatingActionButton add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main4);
         review = findViewById(R.id.review);
 
         db = FirebaseFirestore.getInstance();
@@ -43,17 +43,19 @@ public class MainActivity3 extends AppCompatActivity {
         int year=date.getYear();
         int month=date.getMonth()+1;
         int day=date.getDay();
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         String result=dateFormat.format(date);
 
         Log.d("msg", result);
-        query = db.collection("users").whereEqualTo("due",result);
+        String[] arrSplit = result.split("-");
+
+        query = db.collection("users").whereLessThanOrEqualTo("duedate",result);
         review.setLayoutManager(new LinearLayoutManager(this));
-        FirestoreRecyclerOptions<model3> options = new FirestoreRecyclerOptions.Builder<model3>()
-                .setQuery(query, model3.class)
+        FirestoreRecyclerOptions<model4> options = new FirestoreRecyclerOptions.Builder<model4>()
+                .setQuery(query, model4.class)
                 .build();
-        adapter = new myadapter3(options);
+        adapter = new myadapter4(options);
         review.setAdapter(adapter);
         review.setHasFixedSize(true);
         add = (FloatingActionButton) findViewById(R.id.add);
@@ -87,23 +89,20 @@ public class MainActivity3 extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.Logout:
-                Toast.makeText(this, "Logout Selected", Toast.LENGTH_SHORT).show();
-                Intent intent2 = new Intent(MainActivity3.this, MainActivity.class);
+                Toast.makeText(this, "Logout SElected", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(MainActivity4.this, MainActivity.class);
                 startActivity(intent2);
                 return true;
             case R.id.Total:
-                Toast.makeText(this, "Total Due Selected", Toast.LENGTH_SHORT).show();
-
-                Intent intent4 = new Intent(MainActivity3.this,MainActivity4.class);
-                startActivity(intent4);
+                Toast.makeText(this, "Already in total dues page", Toast.LENGTH_SHORT).show();
                 return true;
-
             case R.id.Due:
-                Toast.makeText(this, "Already in today's dues page", Toast.LENGTH_SHORT).show();
-                return true;
+                Toast.makeText(this, "Due Today Selected", Toast.LENGTH_SHORT).show();
+                Intent intent3 = new Intent(MainActivity4.this,MainActivity3.class);
+                startActivity(intent3);
             case R.id.Users:
                 Toast.makeText(this, "Users Selected", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity3.this,MainActivity2.class);
+                Intent intent = new Intent(MainActivity4.this,MainActivity2.class);
                 startActivity(intent);
                 return true;
             default:
