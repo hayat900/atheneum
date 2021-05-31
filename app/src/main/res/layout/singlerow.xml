@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="#E7E9E9"
         android:padding="10dp">
 
 
@@ -42,7 +43,7 @@
                     android:layout_marginLeft="10dp"
                     android:text="This is Demo Name"
                     android:textColor="#000"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -52,7 +53,7 @@
                     android:layout_marginLeft="10dp"
                     android:text="This is Course Name"
                     android:textColor="#000"
-                    android:textSize="25sp" />
+                    android:textSize="20sp" />
 
 
                 <TextView
@@ -62,7 +63,7 @@
                     android:layout_marginLeft="10dp"
                     android:text="This is Email Name"
                     android:textColor="#000"
-                    android:textSize="25sp" />
+                    android:textSize="20sp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 

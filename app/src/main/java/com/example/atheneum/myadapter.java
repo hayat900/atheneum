@@ -97,7 +97,7 @@ public class myadapter extends FirestoreRecyclerAdapter<model,myadapter.myviewho
                     @Override
                     public void onClick(View v) {
                         Map<String,Object> umap=new HashMap<>();
-                        umap.put("url",url.getText().toString());
+                        umap.put("image",url.getText().toString());
                         umap.put("name",name.getText().toString());
                         umap.put("author",author.getText().toString());
                         umap.put("qty",qty.getText().toString());

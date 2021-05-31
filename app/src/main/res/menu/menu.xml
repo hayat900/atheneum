@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Users" android:id="@+id/Users" />
+    <item android:title="Due Today" android:id="@+id/Due"/>
+    <item android:title="Total Dues" android:id="@+id/Total"/>
+    <item android:title="Logout" android:id="@+id/Logout" />
+</menu>
