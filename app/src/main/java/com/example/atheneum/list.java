@@ -28,9 +28,10 @@ import java.util.Date;
 public class list extends AppCompatActivity {
     RecyclerView review;
     FirebaseFirestore db;
-    myadapter3 adapter;
+    myadapter6 adapter;
     Query query;
     FloatingActionButton add;
+    String newString=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class list extends AppCompatActivity {
 
         Bundle extras;
 
-        String newString=null;
+
         if (savedInstanceState == null)
 
         {
@@ -71,7 +72,7 @@ public class list extends AppCompatActivity {
         FirestoreRecyclerOptions<model3> options = new FirestoreRecyclerOptions.Builder<model3>()
                 .setQuery(query, model3.class)
                 .build();
-        adapter = new myadapter3(options);
+        adapter = new myadapter6(options);
         review.setAdapter(adapter);
         review.setHasFixedSize(true);
         add = (FloatingActionButton) findViewById(R.id.add);
@@ -113,7 +114,7 @@ public class list extends AppCompatActivity {
                 Toast.makeText(this, "All books", Toast.LENGTH_SHORT).show();
 
                 Intent intent4 = new Intent(list.this,UserHome.class);
-
+                intent4.putExtra("Login_id",newString);
                 startActivity(intent4);
                 return true;
 

@@ -68,16 +68,20 @@ public class UserHome extends AppCompatActivity {
             }
             case R.id.id2:
             {
+
+
                 startActivity(new Intent(this,MainActivity.class));
+                Toast.makeText(this, "Logout Selected", Toast.LENGTH_SHORT).show();
+                return true;
 
             }
             case R.id.id3:
                 Toast.makeText(this, "Already in all books", Toast.LENGTH_SHORT).show();
 
-
                 return true;
 
-            default:return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
