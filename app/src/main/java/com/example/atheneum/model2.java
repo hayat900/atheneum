@@ -8,6 +8,7 @@ public class model2 {
     String name,sem,usn,book,author,image,fine,email;
     String issue;
     String due;
+//   String qty;
     model2(){
 
     }
@@ -23,6 +24,7 @@ public class model2 {
         this.issue = issue;
         this.due = due;
         this.email=email;
+
     }
 
 
@@ -104,4 +106,11 @@ public class model2 {
     public void setEmail(String email) {
         this.email = email;
     }
+//    public String getQty() {
+//        return qty;
+//    }
+//
+//    public void setQty(String fine) {
+//        this.qty= qty;
+//    }
 }

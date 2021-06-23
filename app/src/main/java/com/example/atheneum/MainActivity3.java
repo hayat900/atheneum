@@ -106,6 +106,11 @@ public class MainActivity3 extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity3.this,MainActivity2.class);
                 startActivity(intent);
                 return true;
+            case R.id.Issue:
+                Toast.makeText(this, "Issued Today", Toast.LENGTH_SHORT).show();
+                Intent intent5 = new Intent(MainActivity3.this,Issued.class);
+                startActivity(intent5);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

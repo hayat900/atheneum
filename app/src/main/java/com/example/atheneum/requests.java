@@ -25,37 +25,54 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity4 extends AppCompatActivity {
+public class requests extends AppCompatActivity {
     RecyclerView review;
     FirebaseFirestore db;
-    myadapter4 adapter;
+    requestadapter adapter;
     Query query;
     FloatingActionButton add;
+    String newString=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_list);
         review = findViewById(R.id.review);
 
         db = FirebaseFirestore.getInstance();
-        Date date=new Date();
-        int year=date.getYear();
-        int month=date.getMonth()+1;
-        int day=date.getDay();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        String result=dateFormat.format(date);
+        Bundle extras;
 
-        Log.d("msg", result);
-        String[] arrSplit = result.split("-");
 
-        query = db.collection("users").whereLessThanOrEqualTo("duedate",result);
+        if (savedInstanceState == null)
+
+        {
+
+            /*fetching extra data passed with intents in a Bundle type variable*/
+
+
+
+            extras = getIntent().getExtras();
+            /* fetching the string passed with intent using ‘extras’*/
+            if(extras == null)
+
+                newString = null;
+            else
+
+                newString = extras.getString("id");
+
+        }
+
+
+
+
+        Log.d("msg", newString);
+        query = db.collection("requests").whereEqualTo("email",newString);
         review.setLayoutManager(new LinearLayoutManager(this));
-        FirestoreRecyclerOptions<model4> options = new FirestoreRecyclerOptions.Builder<model4>()
-                .setQuery(query, model4.class)
+        FirestoreRecyclerOptions<model3> options = new FirestoreRecyclerOptions.Builder<model3>()
+                .setQuery(query, model3.class)
                 .build();
-        adapter = new myadapter4(options);
+        adapter = new requestadapter(options);
         review.setAdapter(adapter);
         review.setHasFixedSize(true);
         add = (FloatingActionButton) findViewById(R.id.add);
@@ -81,34 +98,42 @@ public class MainActivity4 extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.menu2, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.Logout:
-                Toast.makeText(this, "Logout SElected", Toast.LENGTH_SHORT).show();
-                Intent intent2 = new Intent(MainActivity4.this, MainActivity.class);
+            case R.id.id2:
+                Toast.makeText(this, "Logout Selected", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(requests.this, MainActivity.class);
                 startActivity(intent2);
                 return true;
-            case R.id.Total:
-                Toast.makeText(this, "Already in total dues page", Toast.LENGTH_SHORT).show();
+            case R.id.id3:
+                Toast.makeText(this, "All books", Toast.LENGTH_SHORT).show();
+
+                Intent intent4 = new Intent(requests.this,UserHome.class);
+                intent4.putExtra("id",newString);
+                startActivity(intent4);
                 return true;
-            case R.id.Due:
-                Toast.makeText(this, "Due Today Selected", Toast.LENGTH_SHORT).show();
-                Intent intent3 = new Intent(MainActivity4.this,MainActivity3.class);
-                startActivity(intent3);
-            case R.id.Users:
-                Toast.makeText(this, "Users Selected", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity4.this,MainActivity2.class);
+            case R.id.requests:
+                Toast.makeText(this, "Already in my requests", Toast.LENGTH_SHORT).show();
+
+
+                return true;
+
+
+
+
+
+            case R.id.id1:
+                Toast.makeText(this, newString, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(requests.this, list.class);
+                String strName = null;
+                Log.d("id",newString);
+                intent.putExtra("id", newString);
                 startActivity(intent);
-                return true;
-            case R.id.Issue:
-                Toast.makeText(this, "Issued Today", Toast.LENGTH_SHORT).show();
-                Intent intent5 = new Intent(MainActivity4.this,Issued.class);
-                startActivity(intent5);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

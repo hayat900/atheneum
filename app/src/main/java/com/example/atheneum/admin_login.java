@@ -61,21 +61,16 @@ public class admin_login extends AppCompatActivity {
             }
         });
 
-//        b2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
 
 
 
-//        textView5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(Admn_login.this,Admin_register.class);
-//                startActivity(intent);
-//            }
-//        });
+
+        textView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(admin_login.this,adminregister.class);
+                startActivity(intent);
+            }
+        });
     }
 }

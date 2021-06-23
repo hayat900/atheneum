@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -87,9 +89,17 @@ public class Retrive extends AppCompatActivity {
                 Intent intent = new Intent(Retrive.this,MainActivity2.class);
                 startActivity(intent);
                 return true;
+            case R.id.Issue:
+                Toast.makeText(this, "Issued Today", Toast.LENGTH_SHORT).show();
+                Intent intent5 = new Intent(Retrive.this,Issued.class);
+                startActivity(intent5);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
 
+
     }
+
 }

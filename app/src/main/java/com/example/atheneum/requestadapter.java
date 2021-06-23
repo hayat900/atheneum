@@ -35,8 +35,8 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myviewholder> {
-    public myadapter3(@NonNull FirestoreRecyclerOptions<model3> options) {
+public class requestadapter extends FirestoreRecyclerAdapter<model3, requestadapter.myviewholder> {
+    public requestadapter(@NonNull FirestoreRecyclerOptions<model3> options) {
         super(options);
     }
 
@@ -54,9 +54,9 @@ public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myvi
         holder.issue.setText("Usn: " + model.getUsn());
         holder.book.setText("Book: " + model.getBook());
         holder.due.setText("Author: " + model.getAuthor());
-        holder.fine.setText("Fine: " + model.getFine());
-        holder.usn.setText("Issue: " + model.getIssue());
-        holder.author.setText("Due: " + date);
+        holder.fine.setText("Fine: " + "Not applicable");
+        holder.usn.setText("Requested on: " + model.getIssue());
+        holder.author.setText("Due: " + "Not applicable");
         holder.email.setText("Email: " + model.getEmail());
 
 
@@ -78,7 +78,7 @@ public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myvi
 
 
 
-                        dbroot.collection("users").document(model.getEmail()).delete();
+                        dbroot.collection("requests").document(model.getEmail()).delete();
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -135,7 +135,6 @@ public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myvi
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d("msg","congrats");
-
                                 dialogPlus.dismiss();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -153,14 +152,13 @@ public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myvi
             }
         });
 
-
         //
     }
 
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.singlerow2,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.singlerow4,parent,false);
         return new myviewholder(view);
     }
 
@@ -168,7 +166,6 @@ public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myvi
         CircleImageView img;
         TextView name,usn,sem,book,author,fine,issue,due,email;
         ImageView edit,delete;
-        Button issue_books;
         public myviewholder(@NonNull View itemView) {
             super(itemView);
             img=(CircleImageView) itemView.findViewById(R.id.img1);
@@ -183,8 +180,6 @@ public class myadapter3 extends FirestoreRecyclerAdapter<model3, myadapter3.myvi
             due=(TextView)itemView.findViewById(R.id.due);
             edit=(ImageView)itemView.findViewById(R.id.editicon);
             delete=(ImageView)itemView.findViewById(R.id.delete);
-//            issue_books=(Button)itemView.findViewById(R.id.issue_books);
         }
     }
 }
-

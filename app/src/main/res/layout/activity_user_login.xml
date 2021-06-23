@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cons"
         app:layout_constraintVertical_bias="0.210"
-/>
+        app:srcCompat="@drawable/logicon" />
     <EditText
         android:id="@+id/mail"
         android:layout_width="270dp"

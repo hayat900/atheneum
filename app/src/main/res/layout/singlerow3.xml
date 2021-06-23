@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:background="#E7E9E9"
         android:orientation="vertical"
         android:padding="10dp">
@@ -34,7 +34,7 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="302dp"
-                android:layout_height="168dp"
+                android:layout_height="180dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -76,12 +76,11 @@
         <Button
             android:id="@+id/issue"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_weight="1"
-            android:background="#3F51B5"
-            android:text="ISSUE"
-            android:textColor="#FFFFFF"
+
+
+            android:text="Request"
             android:textSize="15dp" />
 
     </LinearLayout>

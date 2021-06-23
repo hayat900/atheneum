@@ -81,6 +81,7 @@ public class useradapter extends FirestoreRecyclerAdapter<model2, useradapter.my
 
 
                         dbroot.collection("users").document(model.getEmail()).delete();
+
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

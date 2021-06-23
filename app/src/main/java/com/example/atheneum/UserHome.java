@@ -27,7 +27,7 @@ public class UserHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
         review = findViewById(R.id.review);
-        logid=getIntent().getStringExtra("Login_id");
+        logid=getIntent().getStringExtra("id");
 
 
         // add=findViewById(R.id.add);
@@ -73,6 +73,19 @@ public class UserHome extends AppCompatActivity {
                 startActivity(new Intent(this,MainActivity.class));
                 Toast.makeText(this, "Logout Selected", Toast.LENGTH_SHORT).show();
                 return true;
+
+            }
+            case R.id.requests:
+            {
+
+                Toast.makeText(this, logid, Toast.LENGTH_SHORT).show();
+                Intent intentr = new Intent(UserHome.this, requests.class);
+                String strName = null;
+                Log.d("id",logid);
+                intentr.putExtra("id", logid);
+                startActivity(intentr);
+                return true;
+
 
             }
             case R.id.id3:

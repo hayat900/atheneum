@@ -81,7 +81,7 @@ public class user_login extends AppCompatActivity {
                                     if (document.getString("password").equals(psd.getText().toString())) {
                                         count = 1;
                                         Intent in = new Intent(getApplicationContext(), UserHome.class);
-                                        in.putExtra("Login_id",name.getText().toString());
+                                        in.putExtra("id",name.getText().toString());
                                         startActivity(in);
 
 
@@ -110,7 +110,7 @@ public class user_login extends AppCompatActivity {
 
     private void register()
     {
-        //Intent in=new Intent(this, UserRegister.class);
-        //startActivity(in);
+        Intent in=new Intent(this, registeruser.class);
+        startActivity(in);
     }
     }

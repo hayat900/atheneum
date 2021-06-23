@@ -57,7 +57,7 @@ public class myadapter5 extends FirestoreRecyclerAdapter<model5,myadapter5.myvie
 
     @Override
     protected void onBindViewHolder(@NonNull myadapter5.myviewholder holder, int position, @NonNull model5 model) {
-        holder.name.setText("book:"+model.getName());
+        holder.name.setText("Book:"+model.getName());
         holder.author.setText("Author : "+model.getAuthor());
         holder.qty.setText("Qty : "+model.getQty());
 
@@ -211,12 +211,11 @@ public class myadapter5 extends FirestoreRecyclerAdapter<model5,myadapter5.myvie
                                                         //umap.put("qty", qty.getText().toString());
                                                         umap.put("image", url);
                                                         umap.put("issue", d1);
-                                                        umap.put("duedate", d3);
-                                                        umap.put("due", d2);
-                                                        umap.put("fine", fine);
 
 
-                                                        db2.collection("users").document(mail.getText().toString()).set(umap).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+
+                                                        db2.collection("requests").document(mail.getText().toString()).set(umap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
                                                                 Log.d("msg", "congrats");

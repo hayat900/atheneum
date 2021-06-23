@@ -114,9 +114,22 @@ public class list extends AppCompatActivity {
                 Toast.makeText(this, "All books", Toast.LENGTH_SHORT).show();
 
                 Intent intent4 = new Intent(list.this,UserHome.class);
-                intent4.putExtra("Login_id",newString);
+                intent4.putExtra("id",newString);
                 startActivity(intent4);
                 return true;
+            case R.id.requests:
+
+
+                Toast.makeText(this, newString, Toast.LENGTH_SHORT).show();
+                Intent intentr = new Intent(list.this, requests.class);
+                String strName = null;
+                Log.d("id",newString);
+                intentr.putExtra("id", newString);
+                startActivity(intentr);
+                return true;
+
+
+
 
 
             case R.id.id1:

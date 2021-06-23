@@ -92,6 +92,11 @@ public class MainActivity2 extends AppCompatActivity {
                 Toast.makeText(this, "Already in users", Toast.LENGTH_SHORT).show();
 
                 return true;
+            case R.id.Issue:
+                Toast.makeText(this, "Issued Today", Toast.LENGTH_SHORT).show();
+                Intent intent5 = new Intent(MainActivity2.this,Issued.class);
+                startActivity(intent5);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
