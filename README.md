@@ -1,7 +1,9 @@
 # Atheneum
+## One stop for all the book lovers
+This is a library management app.
 
 ### Step 1:To run this app,open cmd in windows or terminal in linux and then type the following
-## git clone https://github.com/hayat900/atheneum.git
+### git clone https://github.com/hayat900/atheneum.git
 You can also run this app by downloading the folder attached.
 ### Step 2:Open the downloaded project in android studio.
 ### Step 3:In Android Studio, select Run > Run ‘app' or click the Run icon in the toolbar.The icon will change when your app is already running.In Run > Select Device, under Available devices,select the device on which you would like to install the app.
@@ -67,5 +69,12 @@ Using the Firebase Android BoM, declare the dependencies for the Firebase produc
 Sync your app to ensure that all dependencies have the necessary versions.
 
 ### In firebase(cloud firestore) create 4 tables as follows:
-admin,students,requests and books
+admin,students,requests,users,books.
+
+admin table contains details about admin.
+students table contains details about members which include email id and password.
+requests contains the book and student details of the books which are requested which include sem,name,email id,book,author,requested date.
+users table contains the book and student details of the books which are issued.This also includes the due date and the fine upto the current date.
+books table contains detail about books which include name,author,qty along with image url.
+
 
