@@ -1,6 +1,6 @@
 # Atheneum
-Library
-Step 1:To run this app,open cmd in windows or terminal in linux and then type the following
+
+### Step 1:To run this app,open cmd in windows or terminal in linux and then type the following
 ## git clone https://github.com/hayat900/atheneum.git
 You can also run this app by downloading the folder attached.
 ### Step 2:Open the downloaded project in android studio.
