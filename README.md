@@ -3,8 +3,8 @@ Library
 Step 1:To run this app,open cmd in windows or terminal in linux and then type the following
 ## git clone https://github.com/hayat900/atheneum.git
 You can also run this app by downloading the folder attached.
-## Step 2:Open the downloaded project in android studio.
-## Step 3:In Android Studio, select Run > Run ‘app' or click the Run icon in the toolbar.The icon will change when your app is already running.In Run > Select Device, under Available devices,select the device on which you would like to install the app.
+### Step 2:Open the downloaded project in android studio.
+### Step 3:In Android Studio, select Run > Run ‘app' or click the Run icon in the toolbar.The icon will change when your app is already running.In Run > Select Device, under Available devices,select the device on which you would like to install the app.
 
 There are two modules in this app.1.Admin module  2.User Module
 To run admin module,give username and password as admin.
